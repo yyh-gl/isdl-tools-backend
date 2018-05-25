@@ -1,5 +1,5 @@
 if "development" == ENV.fetch("RAILS_ENV") { "development" }
-  ssl_bind '0.0.0.0', 443, {
+  ssl_bind ENV['port'], 443, {
     key:  ENV['server_key'],
     cert: ENV['server_crt'],
     verify_mode: "none"
