@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## エンドポイント
+- ユーザ一覧取得 `GET /api/users`
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+[
+    {
+        "id": 1,
+        "name": "本田くん",
+        "age": 23,
+        "message": "Hello!",
+        "created_at": "2018-05-25T15:38:02.000+09:00",
+        "updated_at": "2018-05-25T15:38:02.000+09:00"
+    },
+    {
+        "id": 2,
+        "name": "山本くん",
+        "age": 18,
+        "message": "がんばるぞい!",
+        "created_at": "2018-05-25T15:39:46.000+09:00",
+        "updated_at": "2018-05-25T15:39:46.000+09:00"
+    },
+    {
+        "id": 3,
+        "name": "三木先生",
+        "age": 1,
+        "message": "タスクフォース！",
+        "created_at": "2018-05-26T00:40:51.000+09:00",
+        "updated_at": "2018-05-26T00:40:51.000+09:00"
+    }
+]
+```
