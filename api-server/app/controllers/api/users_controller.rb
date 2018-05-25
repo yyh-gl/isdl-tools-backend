@@ -6,4 +6,10 @@ class Api::UsersController < ApplicationController
     json_response(users)
   end
 
+  # GET /api/user/:id
+  def show
+    user = User.find(params[:id])
+    json_response(user)
+  end
+
 end
