@@ -58,19 +58,91 @@
  }
  ```
  
- ##### レスポンス
- > `score` が文章全体の感情
- > 正の感情であればプラスの値（最大値1）
- > 負の感情であればマイナスの値（最小値-1）
- >
- > `magnitude` に関しては聞いてください
+##### レスポンス
+> `score` が文章全体の感情
+> 正の感情であればプラスの値（最大値1）
+> 負の感情であればマイナスの値（最小値-1）
+>
+> `magnitude` に関しては聞いてください
+
+```
+{
+    "result": {
+        "score": 0.30000001192092896,
+        "magnitude": 1.2999999523162842
+    }
+}
+```
  
- ```
- {
-     "result": {
-         "score": 0.30000001192092896,
-         "magnitude": 1.2999999523162842
-     }
- }
- ```
+#### テキストから感情分析
  
+`/api/google/calendars`
+
+##### レスポンス
+> ↓50件（変更可能）取得できるが省略
+```
+[
+    {
+        "created": "2018-03-21T07:31:25.000+00:00",
+        "creator": {
+            "email": "mmiki@mikilab.doshisha.ac.jp",
+            "self": true
+        },
+        "end": {
+            "date_time": "2018-05-26T16:30:00.000+09:00"
+        },
+        "etag": "\"3043234983264000\"",
+        "html_link": "https://www.google.com/calendar/event?eid=MjVramFnbmJuOTkzcTVzYWNzNjE5OHNrc2kgbW1pa2lAbWlraWxhYi5kb3NoaXNoYS5hYy5qcA",
+        "i_cal_uid": "25kjagnbn993q5sacs6198sksi@google.com",
+        "id": "25kjagnbn993q5sacs6198sksi",
+        "kind": "calendar#event",
+        "organizer": {
+            "email": "mmiki@mikilab.doshisha.ac.jp",
+            "self": true
+        },
+        "reminders": {
+            "use_default": true
+        },
+        "sequence": 0,
+        "start": {
+            "date_time": "2018-05-26T14:00:00.000+09:00"
+        },
+        "status": "confirmed",
+        "summary": "父母懇談会",
+        "updated": "2018-03-21T07:31:31.632+00:00"
+    },
+    {
+        "created": "2018-05-23T11:18:41.000+00:00",
+        "creator": {
+            "email": "mmiki@mikilab.doshisha.ac.jp",
+            "self": true
+        },
+        "end": {
+            "date_time": "2018-05-26T17:30:00.000+09:00"
+        },
+        "etag": "\"3054148643712000\"",
+        "html_link": "https://www.google.com/calendar/event?eid=N200azdyZ3E4dWJyM2Viamo0bWlncTdvZmQgbW1pa2lAbWlraWxhYi5kb3NoaXNoYS5hYy5qcA",
+        "i_cal_uid": "7m4k7rgq8ubr3ebjj4migq7ofd@google.com",
+        "id": "7m4k7rgq8ubr3ebjj4migq7ofd",
+        "kind": "calendar#event",
+        "organizer": {
+            "email": "mmiki@mikilab.doshisha.ac.jp",
+            "self": true
+        },
+        "reminders": {
+            "use_default": true
+        },
+        "sequence": 0,
+        "start": {
+            "date_time": "2018-05-26T16:30:00.000+09:00"
+        },
+        "status": "confirmed",
+        "summary": "SOEPA講演者へリマインダー",
+        "updated": "2018-05-23T11:18:41.856+00:00",
+        "extended_properties": {
+            "private": {
+                "everyoneDeclinedDismissed": "-1"
+            }
+        }
+    },
+``` 
