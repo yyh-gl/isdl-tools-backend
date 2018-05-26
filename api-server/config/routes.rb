@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get '/users/:id', to: 'users#show'
 
     namespace :google do
+      get '/calendars', to: 'calendars#index'
+      get '/calendars/:event_title', to: 'calendars#search'
       post '/languages', to: 'languages#analyze'
     end
   end
