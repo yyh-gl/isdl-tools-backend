@@ -1,6 +1,27 @@
 class Api::Google::LanguagesController < ApplicationController
   require 'google/cloud/language'
 
+  swagger_controller :Languages, '言語処理API'
+
+  swagger_api :analyze do
+    summary 'Analyze sentiment in text'
+    consumes ['application/json']
+    param :query, :text, :string, :required, '私はとても悲しい。でも、友達が励ましてくれたおかげで、今はとても元気です。'
+    response :ok, 'Success', :Result
+    response :internal_server_error
+  end
+
+  swagger_model :Result do
+    description 'Result parameters'
+    property :result, :object, :required, 'Result object', { "$ref": 'Sentiment' }
+  end
+
+  swagger_model :Sentiment do
+    description 'Sentiment parameters'
+    property :score, :number, :required, 0.30000001192092896
+    property :magnitude, :number, :required, 1.2999999523162842
+  end
+
   def analyze
     language = Google::Cloud::Language.new
     text = params[:text]

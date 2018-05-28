@@ -1,0 +1,77 @@
+{
+  "apiVersion": "v1",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "resourcePath": "languages",
+  "apis": [
+    {
+      "path": "/api/google/languages",
+      "operations": [
+        {
+          "summary": "Analyze sentiment in text",
+          "consumes": [
+            "application/json"
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "Result",
+              "message": "Success"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Internal Server Error"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "text",
+              "type": "string",
+              "description": "私はとても悲しい。でも、友達が励ましてくれたおかげで、今はとても元気です。",
+              "required": true
+            }
+          ],
+          "nickname": "Api::Google::Languages#analyze",
+          "method": "post"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "Result": {
+      "id": "Result",
+      "required": [
+        "result"
+      ],
+      "properties": {
+        "result": {
+          "type": "object",
+          "description": "Result object",
+          "$ref": "Sentiment"
+        }
+      },
+      "description": "Result parameters"
+    },
+    "Sentiment": {
+      "id": "Sentiment",
+      "required": [
+        "score",
+        "magnitude"
+      ],
+      "properties": {
+        "score": {
+          "type": "number",
+          "description": 0.30000001192092896
+        },
+        "magnitude": {
+          "type": "number",
+          "description": 1.2999999523162842
+        }
+      },
+      "description": "Sentiment parameters"
+    }
+  }
+}
