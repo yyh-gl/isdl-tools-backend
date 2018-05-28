@@ -1,5 +1,17 @@
 class Api::UsersController < ApplicationController
 
+  # GET /api/user
+  def index
+    users = User.all
+    json_response(users)
+  end
+
+  # GET /api/user/:id
+  def show
+    user = User.find(params[:id])
+    json_response(user)
+  end
+
   swagger_controller :Users, 'ユーザAPI'
 
   swagger_api :index do
@@ -27,18 +39,6 @@ class Api::UsersController < ApplicationController
     property :message, :string, :required, 'Hello World!'
     property :created_at, :string, :required, '2018-05-26T01:03:21.550+09:00'
     property :updated_at, :string, :required, '2018-05-26T01:03:21.550+09:00'
-  end
-
-  # GET /api/user
-  def index
-    users = User.all
-    json_response(users)
-  end
-
-  # GET /api/user/:id
-  def show
-    user = User.find(params[:id])
-    json_response(user)
   end
 
 end
