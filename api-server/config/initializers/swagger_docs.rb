@@ -28,6 +28,6 @@ Swagger::Docs::Config.register_apis(
 
 GrapeSwaggerRails.options.app_name    = "Spajam API"
 # 基盤となるJSON
-GrapeSwaggerRails.options.url         = "/apidocs/api-docs.json"
+GrapeSwaggerRails.options.url         = "apidocs/api-docs.json"
 # こっちの`/`は置換されないのでこれでOK
 GrapeSwaggerRails.options.app_url     = "/"
