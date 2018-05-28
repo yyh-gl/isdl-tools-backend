@@ -10,7 +10,8 @@ Swagger::Docs::Config.register_apis(
     { 'v1' => {
         :api_extension_type => nil,
         :api_file_path => 'public/apidocs/', # JSONが置かれるPATH
-        :base_path => "http://#{ENV['ip']}:#{ENV['port']}/", # 最後の`/`が置換されてしまうのでURLを記載
+        #:base_path => "http://#{ENV['ip']}:#{ENV['port']}/", # 最後の`/`が置換されてしまうのでURLを記載
+        :base_path => "http://desolate-taiga-68263.herokuapp.com/", # 最後の`/`が置換されてしまうのでURLを記載
         :clean_directory => true,
         :formatting => :pretty,
         :camelize_model_properties => false,
