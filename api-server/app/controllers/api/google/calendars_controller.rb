@@ -1,10 +1,12 @@
 class Api::Google::CalendarsController < ApplicationController
 
+  # GET /api/google/calendars
   def index
     events = fetch_calender_events
     json_response(events)
   end
 
+  # GET /api/google/calendars/:event_title
   # TODO: 日本語対応
   def search
     events = fetch_event_with_title(params['event_title'])

@@ -6,6 +6,12 @@ class Api::UsersController < ApplicationController
     json_response(users)
   end
 
+  # POST /api/user/
+  def create
+    user = User.create!(name: params['name'], age: params['age'], message: params['message'])
+    json_response(user)
+  end
+
   # GET /api/user/:id
   def show
     user = User.find(params[:id])
@@ -19,6 +25,16 @@ class Api::UsersController < ApplicationController
     consumes ['application/json']
     response :ok, 'Success', :User
     response :not_found
+    response :internal_server_error
+  end
+
+  swagger_api :create do
+    summary 'add new user information'
+    consumes ['application/json']
+    param :query, :name, :string, :required, 'User name'
+    param :query, :age, :integer, :required, 'User age'
+    param :query, :message, :string, :required, 'User message'
+    response :ok, 'Success', :User
     response :internal_server_error
   end
 

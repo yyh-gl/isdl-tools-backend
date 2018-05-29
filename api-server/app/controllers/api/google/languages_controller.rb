@@ -1,6 +1,7 @@
 class Api::Google::LanguagesController < ApplicationController
   require 'google/cloud/language'
 
+  # POST /api/google/languages
   def analyze
     language = Google::Cloud::Language.new
     text = params[:text]
