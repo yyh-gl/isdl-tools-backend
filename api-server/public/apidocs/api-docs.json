@@ -1,0 +1,27 @@
+{
+  "apiVersion": "v1",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000",
+  "apis": [
+    {
+      "path": "/apidocs/api/users/v1.{format}",
+      "description": "ユーザAPI"
+    },
+    {
+      "path": "/apidocs/api/google/calendars/v1.{format}",
+      "description": "GoogleカレンダーAPI"
+    },
+    {
+      "path": "/apidocs/api/google/languages/v1.{format}",
+      "description": "言語処理API"
+    }
+  ],
+  "authorizations": null,
+  "info": {
+    "title": "Spajam API",
+    "description": "for Spajam and you",
+    "contact": "test@example.com",
+    "license": "Apache 2.0",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.html"
+  }
+}
