@@ -121,3 +121,5 @@ fabric.properties
 
 config/certificate
 config/google_secret_jsons
+
+public/apidocs/*
