@@ -30,8 +30,4 @@ class Api::RestaurantsController < ApplicationController
     response :internal_server_error
   end
 
-  swagger_model :Restaurant do
-    description 'Restaurant parameters'
-  end
-
 end
