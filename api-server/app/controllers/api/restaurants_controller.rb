@@ -1,6 +1,4 @@
 class Api::RestaurantsController < ApplicationController
-  require 'open-uri'
-
   BASE_URL = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=#{ENV['KEY_ID']}".freeze
   DEFAULT_PARAMS = ['controller', 'action'].freeze
 

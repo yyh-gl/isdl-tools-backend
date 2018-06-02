@@ -13,5 +13,9 @@ Rails.application.routes.draw do
       get '/calendars/:event_title', to: 'calendars#search'
       post '/languages', to: 'languages#analyze'
     end
+
+    namespace :docomo do
+      post '/conversations', to: 'conversations#understand'
+    end
   end
 end
