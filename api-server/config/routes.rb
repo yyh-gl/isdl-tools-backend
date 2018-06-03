@@ -6,16 +6,19 @@ Rails.application.routes.draw do
     get '/users', to: 'users#index'
     post '/users', to: 'users#create'
     get '/users/:id', to: 'users#show'
-    get '/restaurants', to: 'restaurants#search'
 
-    namespace :google do
-      get '/calendars', to: 'calendars#index'
-      get '/calendars/:event_title', to: 'calendars#search'
-      post '/languages', to: 'languages#analyze'
+    get '/calendars', to: 'calendars#index'
+    get '/calendars/:event_title', to: 'calendars#search'
+
+    namespace :location do
+      get '/restaurants', to: 'restaurants#search'
+      get '/venues', to: 'venues#search'
     end
 
-    namespace :docomo do
+    namespace :analysis do
+      post '/emotions', to: 'emotions#analyze'
       post '/conversations', to: 'conversations#understand'
     end
   end
+
 end

@@ -1,7 +1,7 @@
-class Api::Google::LanguagesController < ApplicationController
+class Api::Analysis::EmotionsController < ApplicationController
   require 'google/cloud/language'
 
-  # POST /api/google/languages
+  # POST /api/analysis/emotions
   def analyze
     language = Google::Cloud::Language.new
     text = params[:text]
@@ -16,7 +16,7 @@ class Api::Google::LanguagesController < ApplicationController
     json_response(res_json)
   end
 
-  swagger_controller :Languages, '言語処理API'
+  swagger_controller :Languageaaaas, '言語処理API'
 
   swagger_api :analyze do
     summary 'Analyze sentiment in text'

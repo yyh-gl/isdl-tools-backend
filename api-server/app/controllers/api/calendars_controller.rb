@@ -1,4 +1,4 @@
-class Api::Google::CalendarsController < ApplicationController
+class Api::CalendarsController < ApplicationController
 
   # GET /api/google/calendars
   def index
