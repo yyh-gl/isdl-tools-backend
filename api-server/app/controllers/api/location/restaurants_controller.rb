@@ -1,5 +1,5 @@
 class Api::Location::RestaurantsController < ApplicationController
-  GURUNAVI_BASE_URL = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=#{ENV['GURUNAVI_KEY_ID']}".freeze
+  GURUNAVI_BASE_URL = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=#{ENV['GURUNAVI_KEY_ID']}&format=json".freeze
 
   # GET /api/restaurants
   def search
@@ -8,9 +8,10 @@ class Api::Location::RestaurantsController < ApplicationController
       next if DEFAULT_PARAMS.include?(param)
       url += "&#{param}=#{params[param]}"
     end
-    url_escape = URI.escape(url)
-    response = open(url_escape)
-    json_response(response)
+    url = URI.escape(url)
+    url = URI.parse(url)
+    response = Net::HTTP.get_response(url)
+    json_response(response.body)
   end
 
   swagger_controller :Restaurants, 'レストラン検索API（ぐるなび）'
