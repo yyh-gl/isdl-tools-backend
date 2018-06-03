@@ -1,5 +1,5 @@
 class Api::RestaurantsController < ApplicationController
-  BASE_URL = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=#{ENV['KEY_ID']}".freeze
+  BASE_URL = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=#{ENV['GURUNAVI_KEY_ID']}".freeze
   DEFAULT_PARAMS = ['controller', 'action'].freeze
 
   # GET /api/restaurants
