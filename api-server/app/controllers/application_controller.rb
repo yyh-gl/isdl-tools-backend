@@ -5,4 +5,6 @@ class ApplicationController < ActionController::API
   include Response
   include ExceptionHandler
   include GoogleCalendar
+
+  DEFAULT_PARAMS = ['controller', 'action'].freeze
 end

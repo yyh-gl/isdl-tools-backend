@@ -1,10 +1,9 @@
 class Api::Location::RestaurantsController < ApplicationController
-  BASE_URL = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=#{ENV['GURUNAVI_KEY_ID']}".freeze
-  DEFAULT_PARAMS = ['controller', 'action'].freeze
+  GURUNAVI_BASE_URL = "https://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=#{ENV['GURUNAVI_KEY_ID']}".freeze
 
   # GET /api/restaurants
   def search
-    url = BASE_URL
+    url = GURUNAVI_BASE_URL
     params.each do |param|
       next if DEFAULT_PARAMS.include?(param)
       url += "&#{param}=#{params[param]}"
