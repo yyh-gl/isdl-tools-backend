@@ -43,10 +43,15 @@ class Api::Analysis::ConversationsController < ApplicationController
     summary 'Get result of intention understanding'
     consumes ['application/json']
     param :query, :message, :string, :required, 'Conversation content'
-    response :ok, 'Success', :Restaurant
+    response :ok, 'Success', :Conversation
     response :bad_request
     response :unauthorized
     response :internal_server_error
+  end
+
+  swagger_model :Conversation do
+    description 'Conversation parameters'
+    property :conversation, :string, :required, '会話に関する情報〜'
   end
 
   private
