@@ -133,3 +133,6 @@ config/google_secret_jsons
 
 # Swagger
 public/apidocs/*
+
+# SQLite
+api-server_development
