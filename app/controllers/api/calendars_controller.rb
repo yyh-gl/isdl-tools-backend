@@ -22,7 +22,7 @@ class Api::CalendarsController < ApplicationController
   swagger_api :index do
     summary 'Get events in Google Calendar'
     consumes ['application/json']
-    response :ok, 'Success', :Result
+    response :ok, 'Success', :Event
     response :not_found
     response :internal_server_error
   end
