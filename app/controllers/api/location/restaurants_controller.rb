@@ -28,4 +28,9 @@ class Api::Location::RestaurantsController < ApplicationController
     response :internal_server_error
   end
 
+  swagger_model :Restaurant do
+    description 'Restaurant parameters'
+    property :restaurant, :string, :required, 'レストランに関する情報〜'
+  end
+
 end
