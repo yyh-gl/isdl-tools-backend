@@ -9,7 +9,6 @@ end
 gem 'rails', '~> 5.1.6'
 # Use mysql as the database for Active Record
 # gem 'mysql2', '>= 0.3.18', '< 0.6.0'
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -47,6 +46,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
