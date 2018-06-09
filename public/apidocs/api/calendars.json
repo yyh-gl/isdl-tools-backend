@@ -1,0 +1,204 @@
+{
+  "apiVersion": "v1",
+  "swaggerVersion": "1.2",
+  "basePath": "http://192.168.10.111:62455",
+  "resourcePath": "calendars",
+  "apis": [
+    {
+      "path": "/api/calendars",
+      "operations": [
+        {
+          "summary": "Get events in Google Calendar",
+          "consumes": [
+            "application/json"
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "Result",
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Internal Server Error"
+            }
+          ],
+          "nickname": "Api::Calendars#index",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null,
+  "models": {
+    "Event": {
+      "id": "Event",
+      "required": [
+        "created",
+        "creator",
+        "end",
+        "etag",
+        "html_link",
+        "i_cal_uid",
+        "id",
+        "kind",
+        "organizer",
+        "reminders",
+        "sequence",
+        "start",
+        "status",
+        "summary",
+        "updated"
+      ],
+      "properties": {
+        "created": {
+          "type": "string",
+          "description": "2018-03-21T07:31:25.000+00:00"
+        },
+        "creator": {
+          "type": "object",
+          "description": "Creator object",
+          "$ref": "Creator"
+        },
+        "end": {
+          "type": "object",
+          "description": "End object",
+          "$ref": "End"
+        },
+        "etag": {
+          "type": "string",
+          "description": "\\\"3043234983264000\\\""
+        },
+        "html_link": {
+          "type": "string",
+          "description": "https://www.google.com/calendar/event?eid=MjVramFnbmJuOTkzcTVzYWNzNjE5OHNrc2kgbW1pa2lAbWlraWxhYi5kb3NoaXNoYS5hYy5qcA"
+        },
+        "i_cal_uid": {
+          "type": "string",
+          "description": "25kjagnbn993q5sacs6198sksi@google.com"
+        },
+        "id": {
+          "type": "string",
+          "description": "25kjagnbn993q5sacs6198sksi"
+        },
+        "kind": {
+          "type": "string",
+          "description": "calendar#event"
+        },
+        "organizer": {
+          "type": "object",
+          "description": "Organizer object",
+          "$ref": "Organizer"
+        },
+        "reminders": {
+          "type": "object",
+          "description": "Reminders object",
+          "$ref": "Reminders"
+        },
+        "sequence": {
+          "type": "integer",
+          "description": 0
+        },
+        "start": {
+          "type": "object",
+          "description": "Start object",
+          "$ref": "Start"
+        },
+        "status": {
+          "type": "string",
+          "description": "confirmed"
+        },
+        "summary": {
+          "type": "string",
+          "description": "父母懇談会"
+        },
+        "updated": {
+          "type": "string",
+          "description": "2018-03-21T07:31:31.632+00:00"
+        }
+      },
+      "description": "Event parameters"
+    },
+    "Creator": {
+      "id": "Creator",
+      "required": [
+        "email",
+        "self"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "test@example.com"
+        },
+        "self": {
+          "type": "string",
+          "description": "true"
+        }
+      },
+      "description": "Creator parameters"
+    },
+    "Start": {
+      "id": "Start",
+      "required": [
+        "date_time"
+      ],
+      "properties": {
+        "date_time": {
+          "type": "string",
+          "description": "2018-05-26T14:00:00.000+09:00"
+        }
+      },
+      "description": "Start parameters"
+    },
+    "End": {
+      "id": "End",
+      "required": [
+        "date_time"
+      ],
+      "properties": {
+        "date_time": {
+          "type": "string",
+          "description": "2018-05-26T16:30:00.000+09:00"
+        }
+      },
+      "description": "End parameters"
+    },
+    "Organizer": {
+      "id": "Organizer",
+      "required": [
+        "email",
+        "self"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "test@example.com"
+        },
+        "self": {
+          "type": "string",
+          "description": "true"
+        }
+      },
+      "description": "Organizer parameters"
+    },
+    "Reminders": {
+      "id": "Reminders",
+      "required": [
+        "use_default"
+      ],
+      "properties": {
+        "use_default": {
+          "type": "string",
+          "description": "true"
+        }
+      },
+      "description": "Reminders parameters"
+    }
+  }
+}
