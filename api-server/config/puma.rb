@@ -1,11 +1,3 @@
-if "development" == ENV.fetch("RAILS_ENV") { "development" }
-  ssl_bind ENV['ssl_port'], 443, {
-    key:  ENV['server_key'],
-    cert: ENV['server_crt'],
-    verify_mode: "none"
-  }
-end
-
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.
 # Any libraries that use thread pools should be configured to match
