@@ -24,9 +24,14 @@ class Api::Location::VenuesController < ApplicationController
     param :query, :ll, :integer, :required, 'Latitude and Longitude'
     param :query, :query, :string, :optional, 'Search keyword'
     param :query, :categoryId, :integer, :optional, 'Search category'
-    response :ok, 'Success', :Restaurant
+    response :ok, 'Success', :Venue
     response :not_found
     response :internal_server_error
+  end
+
+  swagger_model :Venue do
+    description 'Venue parameters'
+    property :venue, :string, :required, '場所に関する情報〜'
   end
 
   private
