@@ -63,6 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # google
 gem 'google-api-client'
 gem 'google-cloud-language'
+gem 'google-cloud-vision'
 
 # Swagger
 gem 'grape-swagger-rails', '~> 0.3.0'

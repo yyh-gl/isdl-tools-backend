@@ -16,7 +16,7 @@ class Api::Analysis::EmotionsController < ApplicationController
     json_response(res_json)
   end
 
-  swagger_controller :Languageaaaas, '言語処理API'
+  swagger_controller :Languages, '言語処理API'
 
   swagger_api :analyze do
     summary 'Analyze sentiment in text'

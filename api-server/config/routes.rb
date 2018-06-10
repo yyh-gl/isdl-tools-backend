@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
 
     namespace :analysis do
+      post '/visions/face', to: 'visions#analyze_face'
+      post '/visions/label', to: 'visions#analyze_label'
       post '/emotions', to: 'emotions#analyze'
       post '/conversations', to: 'conversations#understand'
     end
