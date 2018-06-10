@@ -27,6 +27,7 @@ namespace :server do
   desc 'Deploy to server'
   task :deploy do
     sh 'git pull'
+    sh 'bundle install'
     sh "ps x | grep puma | grep #{ENV['SERVER_PORT']} | awk '{print $1}' | xargs kill -9" do
       # ブロック渡さないとエラーになる
       # 多分、killコマンドの成功時に返される値がだめ
