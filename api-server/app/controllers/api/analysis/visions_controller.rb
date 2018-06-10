@@ -14,7 +14,7 @@ class Api::Analysis::VisionsController < ApplicationController
   end
 
   def get_image_information(image_path)
-    vision = Google::Cloud::Vision.new project: ENV['GOOGLE_PROJECT_ID']
+    vision = Google::Cloud::Vision.new project: ENV['GOOGLE_CLOUD_PROJECT_ID']
     vision.image(image_path)
   end
 
