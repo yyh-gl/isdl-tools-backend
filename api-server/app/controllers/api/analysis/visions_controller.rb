@@ -23,7 +23,7 @@ class Api::Analysis::VisionsController < ApplicationController
   swagger_api :analyze_face do
     summary 'Get result of image recognition(face)'
     consumes ['application/json']
-    param :query, :image_path, :string, :required, 'Path to image'
+    param :query, :image_path, :string, :required, 'Path to image(https URL OK!)'
     response :ok, 'Success', :Conversation
     response :bad_request
     response :unauthorized
@@ -33,7 +33,7 @@ class Api::Analysis::VisionsController < ApplicationController
   swagger_api :analyze_label do
     summary 'Get result of image recognition(label)'
     consumes ['application/json']
-    param :query, :image_path, :string, :required, 'Path to image'
+    param :query, :image_path, :string, :required, 'Path to image(https URL OK!)'
     response :ok, 'Success', :Conversation
     response :bad_request
     response :unauthorized
