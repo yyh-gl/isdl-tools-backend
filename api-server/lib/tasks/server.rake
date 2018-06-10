@@ -32,6 +32,7 @@ namespace :server do
       # 多分、killコマンドの成功時に返される値がだめ
     end
     sh "rails s -d -b #{ENV['LOCAL_SERVER_IP']} -p #{ENV['SERVER_PORT']}"
+    puts "test"
 
     puts "\n=+-+-+-+-+-+-+-+-+="
     puts ' Deploy to server'
