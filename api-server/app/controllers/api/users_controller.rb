@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
   swagger_controller :Users, 'ユーザAPI'
 
   swagger_api :index do
-    summary 'All users information'
+    summary 'Get all users information'
     consumes ['application/json']
     response :ok, 'Success', :User
     response :not_found
@@ -29,7 +29,7 @@ class Api::UsersController < ApplicationController
   end
 
   swagger_api :create do
-    summary 'add new user information'
+    summary 'Add new user information'
     consumes ['application/json']
     param :query, :name, :string, :required, 'User name'
     param :query, :age, :integer, :required, 'User age'
@@ -39,7 +39,7 @@ class Api::UsersController < ApplicationController
   end
 
   swagger_api :show do
-    summary 'a user information'
+    summary 'Get a user information'
     consumes ['application/json']
     param :path, :id, :integer, :required, 'User Id'
     response :ok, 'Success', :User
@@ -51,8 +51,8 @@ class Api::UsersController < ApplicationController
     description 'User parameters'
     property :id, :integer, :required, 1
     property :name, :string, :required, 'テスト 太郎'
-    property :age, :integer, :required, 20
-    property :message, :string, :required, 'Hello World!'
+    property :age, :integer, :optional, 20
+    property :message, :string, :optional, 'Hello World!'
     property :created_at, :string, :required, '2018-05-26T01:03:21.550+09:00'
     property :updated_at, :string, :required, '2018-05-26T01:03:21.550+09:00'
   end
