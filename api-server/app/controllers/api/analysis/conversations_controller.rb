@@ -37,7 +37,7 @@ class Api::Analysis::ConversationsController < ApplicationController
     json_response(res_json)
   end
 
-  swagger_controller :Analysis, '自然対話（意図解釈）API（ドコモ）'
+  swagger_controller :Conversations, '自然対話（意図解釈）API（ドコモ）'
 
   swagger_api :understand do
     summary 'Get result of intention understanding'
