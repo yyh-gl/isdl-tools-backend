@@ -3,9 +3,7 @@ class Api::UsersController < ApplicationController
   # GET /api/user
   def index
     users = User.all
-    test = {user: 'honda'}
-    #json_response(users)
-    json_response(test)
+    json_response(users)
   end
 
   # POST /api/user/
