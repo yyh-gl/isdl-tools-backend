@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     get '/musics/uploaded/user/:id', to: 'musics#get_uploaded'
     get '/musics/possessed/user/:id', to: 'musics#get_possessed'
 
+    get '/lives', to: 'lives#index'
+    post '/lives', to: 'lives#create'
+    get '/lives/:id', to: 'lives#show'
+
     get '/calendars', to: 'calendars#index'
     get '/calendars/:event_title', to: 'calendars#search'
 
