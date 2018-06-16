@@ -11,22 +11,22 @@ class Api::MusicsController < ApplicationController
     json_response(music)
   end
 
-  # GET /api/musics/:id
+  # GET /api/musics/:user_id
   def show
-    music = Music.find(params[:id])
+    music = Music.find(params[:user_id])
     json_response(music)
   end
 
   # GET /api/musics/uploaded/user/:id
   def get_uploaded
-    user = User.find(params[:id])
+    user = User.find(params[:user_id])
     musics = user.musics
     json_response(musics)
   end
 
   # GET /api/musics/possessed/user/:id
   def get_possessed
-    user = User.find(params[:id])
+    user = User.find(params[:user_id])
     musics = user.user_musics
 
     possessed_musics = []
@@ -66,11 +66,12 @@ class Api::MusicsController < ApplicationController
   end
 
   # POST /api/musics/cross/user
-  # TODO: user_cross_musicに登録されてる曲をuser_musicに保存
+  # user_cross_musicに登録されてる曲をuser_musicに保存
   def accept_received_cross_music
     cross_music = UserCrossMusic.find(params[:user_cross_music_id])
     music = cross_music.music
     UserMusic.create!(user_id: params[:user_id], music_id: music[:id], local_path: '/')
+    cross_music.delete
     json_response(music)
   end
 
@@ -97,7 +98,7 @@ class Api::MusicsController < ApplicationController
   swagger_api :show do
     summary 'Get a Music information'
     consumes ['application/json']
-    param :path, :id, :integer, :required, 'Music Id'
+    param :path, :user_id, :integer, :required, 'Music Id'
     response :ok, 'Success', :Music
     response :not_found
     response :internal_server_error
@@ -106,7 +107,7 @@ class Api::MusicsController < ApplicationController
   swagger_api :get_uploaded do
     summary 'ユーザがアップロードした曲一覧取得'
     consumes ['application/json']
-    param :path, :id, :integer, :required, 'User id'
+    param :path, :user_id, :integer, :required, 'User id'
     response :ok, 'Success', :Music
     response :not_found
     response :internal_server_error
@@ -115,27 +116,11 @@ class Api::MusicsController < ApplicationController
   swagger_api :get_possessed do
     summary 'ユーザが所持している曲一覧取得'
     consumes ['application/json']
-    param :path, :id, :integer, :required, 'User id'
+    param :path, :user_id, :integer, :required, 'User id'
     response :ok, 'Success', :Music
     response :not_found
     response :internal_server_error
   end
-
-  # swagger_api :get_cross_accepted_music do
-  #   summary 'すれちがい通信の配信を許可している曲を取得'
-  #   consumes ['application/json']
-  #   response :ok, 'Success', :Music
-  #   response :not_found
-  #   response :internal_server_error
-  # end
-  #
-  # swagger_api :save_received_cross_music do
-  #   summary '受信した曲をすれちがい通信で取得したリストに保存'
-  #   consumes ['application/json']
-  #   response :ok, 'Success', :Music
-  #   response :not_found
-  #   response :internal_server_error
-  # end
 
   swagger_model :Music do
     description 'Music parameters'
@@ -143,16 +128,3 @@ class Api::MusicsController < ApplicationController
   end
 
 end
-
-
-# すれちがい通信の配信を許可している曲を取得
-# def get_cross_accepted_music(user_id)
-#   user = User.find(user_id)
-#   musics = user.user_musics
-#
-#   cross_accepted_musics = []
-#   musics.each do |music|
-#     cross_accepted_musics << Music.find_by(id: music[:music_id], cross: true)
-#   end
-#   return cross_accepted_musics
-# end
