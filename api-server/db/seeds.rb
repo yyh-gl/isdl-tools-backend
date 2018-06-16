@@ -40,7 +40,7 @@ Live.create(user_id: 2, name: 'はんなりライブ')
 Live.create(user_id: 5, name: '女子限定ライブ@兵庫')
 
 ## User_cross_music モデル
-UserCrossMusic.create(user_id: 1, music_id: 1)
-UserCrossMusic.create(user_id: 1, music_id: 4)
-UserCrossMusic.create(user_id: 2, music_id: 2)
-UserCrossMusic.create(user_id: 2, music_id: 3)
+# UserCrossMusic.create(user_id: 1, music_id: 1)
+# UserCrossMusic.create(user_id: 1, music_id: 4)
+# UserCrossMusic.create(user_id: 2, music_id: 2)
+# UserCrossMusic.create(user_id: 2, music_id: 3)
