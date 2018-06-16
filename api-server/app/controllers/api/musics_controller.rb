@@ -17,10 +17,17 @@ class Api::MusicsController < ApplicationController
     json_response(music)
   end
 
-  # GET /api/musics/user/:id
-  def user_index
+  # GET /api/musics/uploaded/user/:id
+  def get_uploaded
     user = User.find(params[:id])
     musics = user.musics
+    json_response(musics)
+  end
+
+  # GET /api/musics/possessed/user/:id
+  def get_possessed
+    user = User.find(params[:id])
+    musics = user.user_musics.music
     json_response(musics)
   end
 
@@ -53,8 +60,17 @@ class Api::MusicsController < ApplicationController
     response :internal_server_error
   end
 
-  swagger_api :user_index do
-    summary 'Get a Users music information'
+  swagger_api :get_uploaded do
+    summary 'ユーザがアップロードした曲一覧取得'
+    consumes ['application/json']
+    param :path, :id, :integer, :required, 'User id'
+    response :ok, 'Success', :Music
+    response :not_found
+    response :internal_server_error
+  end
+
+  swagger_api :get_possessed do
+    summary 'ユーザが所持している曲一覧取得'
     consumes ['application/json']
     param :path, :id, :integer, :required, 'User id'
     response :ok, 'Success', :Music

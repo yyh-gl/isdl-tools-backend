@@ -23,3 +23,8 @@ Music.create(name: '1テストミュージック1', artist: '山本くん', genr
 Music.create(name: '2テストミュージック2', artist: '那須くん', genre: 1, like: 39, intro: true, cross: false, path: '/home/rtomita', user_id: 1)
 # クラシック、イントロあり、すれ違い通信許可
 Music.create(name: '3テストミュージック3', artist: '大黒くん', genre: 2, like: 13, intro: true, cross: true, path: '/home/yhonda', user_id: 2)
+
+## User_music モデル
+UserMusic.create(user_id: 2, music_id: 2, local_path: '/home/yhonda/local')
+UserMusic.create(user_id: 2, music_id: 3, local_path: '/home/yhonda/local')
+UserMusic.create(user_id: 3, music_id: 1, local_path: '/home/tshimakawa/local')
