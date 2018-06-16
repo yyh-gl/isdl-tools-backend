@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     post '/users', to: 'users#create'
     get '/users/:id', to: 'users#show'
 
+    get '/musics', to: 'musics#index'
+    post '/musics', to: 'musics#create'
+    get '/musics/:id', to: 'musics#show'
+
     get '/calendars', to: 'calendars#index'
     get '/calendars/:event_title', to: 'calendars#search'
 

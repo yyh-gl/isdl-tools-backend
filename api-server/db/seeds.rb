@@ -6,12 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+## User モデル
 # 女性、アーティスト、アーティスト、すれ違い通信許可
 User.create(user_id: SecureRandom.hex(10), age: 20, sex: 1, job: 0, area: '大阪府', password: 'a', artist: true, cross: true)
-
 # 男性、学生、非アーティスト、すれ違い通信許可
 User.create(user_id: SecureRandom.hex(10), age: 23, sex: 0, job: 1, area: '京都府', password: 'a', artist: false, cross: true)
-
 # 女性、先生、非アーティスト、すれ違い通信拒否
 User.create(user_id: SecureRandom.hex(10), age: 32, sex: 1, job: 2, area: '京都府', password: 'a', artist: false, cross: false)
 
+## Music モデル
+# J-Pop、イントロなし、すれ違い通信拒否
+Music.create(name: '1テストミュージック1', artist: '山本くん', genre: 0, like: 54, intro: false, cross: false, path: '/home/tshimakawa')
+# K-Pop、イントロあり、すれ違い通信拒否
+Music.create(name: '2テストミュージック2', artist: '那須くん', genre: 1, like: 39, intro: true, cross: false, path: '/home/rtomita')
+# クラシック、イントロあり、すれ違い通信許可
+Music.create(name: '3テストミュージック3', artist: '大黒くん', genre: 2, like: 13, intro: true, cross: true, path: '/home/yhonda')
