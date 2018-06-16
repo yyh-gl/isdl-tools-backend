@@ -127,7 +127,7 @@ class Api::MusicsController < ApplicationController
   swagger_api :get_received_cross_music do
     summary 'すれ違い通信で受信した曲（未DLのもの）一覧取得'
     consumes ['application/json']
-    param :query, :user_id, :integer, :required, 'User id'
+    param :path, :user_id, :integer, :required, 'User id'
     response :ok, 'Success', :Music
     response :not_found
     response :internal_server_error
