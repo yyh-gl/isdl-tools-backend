@@ -46,7 +46,7 @@ class Api::LivesController < ApplicationController
   swagger_api :show do
     summary 'Get a live information'
     consumes ['application/json']
-    param :path, :id, :integer, :required, 'User Id'
+    param :path, :live_id, :integer, :required, 'User Id'
     response :ok, 'Success', :Live
     response :not_found
     response :internal_server_error
