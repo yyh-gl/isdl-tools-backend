@@ -54,7 +54,7 @@ class Api::MusicsController < ApplicationController
     new_cross_musics.each do |cross_music|
       music = Music.find(cross_music[:music_id])
       if music['cross']
-        UserCrossMusic.create!(user_id: params[:receiver_id], music_id: cross_music[:music_id])
+        UserCrossMusic.create!(user_id: params[:reciever_id], music_id: cross_music[:music_id])
       end
     end
     json_response(new_cross_musics)
