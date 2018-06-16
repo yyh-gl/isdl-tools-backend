@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180616081727) do
+ActiveRecord::Schema.define(version: 20180616091058) do
 
   create_table "musics", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,25 @@ ActiveRecord::Schema.define(version: 20180616081727) do
     t.boolean "upload", default: false
     t.string "path"
     t.integer "user_id", default: 0
+  end
+
+  create_table "user_musics", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "artist"
+    t.integer "genre"
+    t.boolean "favorite", default: false
+    t.integer "like", default: 0
+    t.boolean "intro", default: false
+    t.boolean "cross", default: false
+    t.boolean "flag1", default: false
+    t.boolean "flag2", default: false
+    t.boolean "flag3", default: false
+    t.text "text", default: "hoge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "music_id"
+    t.string "local_path"
   end
 
   create_table "users", force: :cascade do |t|
