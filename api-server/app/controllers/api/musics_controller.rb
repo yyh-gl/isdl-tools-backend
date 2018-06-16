@@ -36,27 +36,42 @@ class Api::MusicsController < ApplicationController
     json_response(possessed_musics)
   end
 
-  # GET /api/musics/cross/user/:id
-  def get_cross_accepted_music
-    user = User.find(params[:id])
-    musics = user.user_musics
-
-    cross_accepted_musics = []
-    musics.each do |music|
-      cross_accepted_musics << Music.find_by(id: music[:music_id], cross: true)
-    end
-    json_response(cross_accepted_musics)
+  # GET /api/musics/cross
+  # user_cross_musicに登録されてる曲一覧の取得
+  def get_received_cross_music
+    cross_musics = UserCrossMusic.where(user_id: params[:user_id])
+    json_response(cross_musics)
   end
 
-  # POST /api/musics/cross/user
-  def save_received_cross_music
+  # POST /api/musics/cross
+  # 受信した曲をすれちがい通信で取得したリストに保存
+  #   sender：曲を送る側
+  #   receiver：曲を受け取る側
+  def save_received_cross_music!
     # 送信者側のすれちがい通信許可曲を追加
     send_user = User.find(params[:sender_id])
     new_cross_musics = send_user.user_cross_musics
     new_cross_musics.each do |music|
-      UserCrossMusic.create!(user_id: params[:receive_id], music_id: music[:music_id])
+      UserCrossMusic.create!(user_id: params[:receiver_id], music_id: music[:music_id])
     end
     json_response(new_cross_musics)
+  end
+
+  # DELETE /api/musics/cross/:user_cross_music_id
+  # user_cross_musicに登録されてる曲を削除
+  def delete_received_cross_music
+    cross_music = UserCrossMusic.find(params[:user_cross_music_id])
+    cross_music.delete
+    json_response(cross_music)
+  end
+
+  # POST /api/musics/cross/user
+  # TODO: user_cross_musicに登録されてる曲をuser_musicに保存
+  def accept_received_cross_music
+    cross_music = UserCrossMusic.find(params[:user_cross_music_id])
+    music = cross_music.music
+    UserMusic.create!(user_id: params[:user_id], music_id: music[:id], local_path: '/')
+    json_response(music)
   end
 
   swagger_controller :Musics, 'Music API'
@@ -106,16 +121,38 @@ class Api::MusicsController < ApplicationController
     response :internal_server_error
   end
 
-  swagger_api :get_cross_accepted_music do
-    summary 'すれちがい通信の配信を許可している曲を取得'
-    consumes ['application/json']
-    response :ok, 'Success', :Music
-    response :not_found
-    response :internal_server_error
-  end
+  # swagger_api :get_cross_accepted_music do
+  #   summary 'すれちがい通信の配信を許可している曲を取得'
+  #   consumes ['application/json']
+  #   response :ok, 'Success', :Music
+  #   response :not_found
+  #   response :internal_server_error
+  # end
+  #
+  # swagger_api :save_received_cross_music do
+  #   summary '受信した曲をすれちがい通信で取得したリストに保存'
+  #   consumes ['application/json']
+  #   response :ok, 'Success', :Music
+  #   response :not_found
+  #   response :internal_server_error
+  # end
 
   swagger_model :Music do
     description 'Music parameters'
     property :id, :integer, :required, 1
   end
+
 end
+
+
+# すれちがい通信の配信を許可している曲を取得
+# def get_cross_accepted_music(user_id)
+#   user = User.find(user_id)
+#   musics = user.user_musics
+#
+#   cross_accepted_musics = []
+#   musics.each do |music|
+#     cross_accepted_musics << Music.find_by(id: music[:music_id], cross: true)
+#   end
+#   return cross_accepted_musics
+# end
