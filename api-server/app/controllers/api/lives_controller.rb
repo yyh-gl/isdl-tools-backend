@@ -1,19 +1,27 @@
 class Api::LivesController < ApplicationController
-  # GET /api/users
+  # GET /api/lives
   def index
     lives = Live.all
     json_response(lives)
   end
 
-  # POST /api/users
+  # POST /api/lives
   def create
     live = Live.create!(user_id: params[:id], name: 'みんな集まれ〜', date: DateTime.now.tomorrow)
     json_response(live)
   end
 
-  # GET /api/users/:id
+  # GET /api/lives/:live_id
   def show
-    live = Live.find_by(user_id: params[:id])
+    live = Live.find(params[:live_id])
+    json_response(live)
+  end
+
+  # POST /api/lives/like/:live_id
+  def like
+    live = Live.find(params[:live_id])
+    like_count = live.like + 1
+    live.update(like: like_count)
     json_response(live)
   end
 
@@ -39,6 +47,15 @@ class Api::LivesController < ApplicationController
     summary 'Get a live information'
     consumes ['application/json']
     param :path, :id, :integer, :required, 'User Id'
+    response :ok, 'Success', :Live
+    response :not_found
+    response :internal_server_error
+  end
+
+  swagger_api :like do
+    summary 'いいね'
+    consumes ['application/json']
+    param :path, :live_id, :integer, :required, 'Live Id'
     response :ok, 'Success', :Live
     response :not_found
     response :internal_server_error

@@ -23,7 +23,8 @@ Rails.application.routes.draw do
 
     get '/lives', to: 'lives#index'
     post '/lives', to: 'lives#create'
-    get '/lives/:id', to: 'lives#show'
+    get '/lives/:live_id', to: 'lives#show'
+    post '/lives/like/:live_id', to: 'lives#like'
 
     get '/calendars', to: 'calendars#index'
     get '/calendars/:event_title', to: 'calendars#search'
