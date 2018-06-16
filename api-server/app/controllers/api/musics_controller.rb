@@ -36,7 +36,7 @@ class Api::MusicsController < ApplicationController
     json_response(possessed_musics)
   end
 
-  # GET /api/musics/cross
+  # GET /api/musics/cross/:user_id
   # user_cross_musicに登録されてる曲一覧の取得
   def get_received_cross_music
     cross_musics = UserCrossMusic.where(user_id: params[:user_id])
@@ -50,7 +50,7 @@ class Api::MusicsController < ApplicationController
   def save_received_cross_music!
     # 送信者側のすれちがい通信許可曲を追加
     send_user = User.find(params[:sender_id])
-    new_cross_musics = send_user.user_cross_musics
+    new_cross_musics = send_user.user_musics
     new_cross_musics.each do |cross_music|
       if cross_music.music[:cross]
         UserCrossMusic.create!(user_id: params[:receiver_id], music_id: cross_music[:music_id])
