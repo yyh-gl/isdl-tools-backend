@@ -1,20 +1,20 @@
 class Api::MusicsController < ApplicationController
   # GET /api/music
   def index
-    Musics = Music.all
-    json_response(Musics)
+    music = Music.all
+    json_response(music)
   end
 
   # POST /api/music
   def create
-    user = Music.create!(name: params[:name], artist: params[:artist])
-    json_response(user)
+    music = Music.create!(name: params[:name], artist: params[:artist])
+    json_response(music)
   end
 
   # GET /api/music/:id
   def show
-    user = Music.find(params[:id])
-    json_response(user)
+    music = Music.find(params[:id])
+    json_response(music)
   end
 
   swagger_controller :Musics, 'Music API'
