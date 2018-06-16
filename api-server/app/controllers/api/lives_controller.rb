@@ -25,6 +25,14 @@ class Api::LivesController < ApplicationController
     json_response(live)
   end
 
+  # POST /api/lives/switch/:live_id
+  def switch
+    live = Live.find(params[:live_id])
+    status = !live.open
+    live.update(open: status)
+    json_response(status)
+  end
+
   swagger_controller :Lives, 'ライブAPI'
 
   swagger_api :index do
@@ -54,6 +62,15 @@ class Api::LivesController < ApplicationController
 
   swagger_api :like do
     summary 'いいね'
+    consumes ['application/json']
+    param :path, :live_id, :integer, :required, 'Live Id'
+    response :ok, 'Success', :Live
+    response :not_found
+    response :internal_server_error
+  end
+
+  swagger_api :switch do
+    summary '切り替え'
     consumes ['application/json']
     param :path, :live_id, :integer, :required, 'Live Id'
     response :ok, 'Success', :Live
