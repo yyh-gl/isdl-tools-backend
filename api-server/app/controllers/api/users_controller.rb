@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
 
   # POST /api/user/
   def create
-    user = User.create!(name: params['name'], age: params['age'], message: params['message'])
+    user = User.create!(user_id: SecureRandom.hex(10))
     json_response(user)
   end
 

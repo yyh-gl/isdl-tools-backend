@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyString
+  age: 
+  sex: 1
+  job: MyString
+  area: MyString
+  password: MyString
+  text: MyText
+  artist: false
+  like: 1
+  live_like: 1
+  cross: false
+
+two:
+  user_id: MyString
+  age: 
+  sex: 1
+  job: MyString
+  area: MyString
+  password: MyString
+  text: MyText
+  artist: false
+  like: 1
+  live_like: 1
+  cross: false
