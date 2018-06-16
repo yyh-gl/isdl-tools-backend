@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20180616135234) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "user_id", default: "6d1a75fed21a687bb355"
+    t.string "user_id", default: "e83cd6b7da8b4153d63a"
     t.integer "age", default: 0
     t.integer "sex", default: 0
     t.integer "job", default: 0
