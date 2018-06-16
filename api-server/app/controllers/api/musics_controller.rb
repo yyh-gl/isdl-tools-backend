@@ -52,7 +52,8 @@ class Api::MusicsController < ApplicationController
     send_user = User.find(params[:sender_id])
     new_cross_musics = send_user.user_musics
     new_cross_musics.each do |cross_music|
-      if cross_music.music[:cross]
+      music = Music.find(cross_music[:music_id])
+      if music['cross']
         UserCrossMusic.create!(user_id: params[:receiver_id], music_id: cross_music[:music_id])
       end
     end
