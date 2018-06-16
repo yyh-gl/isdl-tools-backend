@@ -40,7 +40,11 @@ class Api::MusicsController < ApplicationController
   # user_cross_musicに登録されてる曲一覧の取得
   def get_received_cross_music
     cross_musics = UserCrossMusic.where(user_id: params[:user_id])
-    json_response(cross_musics)
+    musics = []
+    cross_musics.each do |cross_music|
+      musics << cross_music.music
+    end
+    json_response(musics)
   end
 
   # POST /api/musics/cross
