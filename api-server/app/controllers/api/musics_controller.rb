@@ -42,7 +42,12 @@ class Api::MusicsController < ApplicationController
     cross_musics = UserCrossMusic.where(user_id: params[:user_id])
     musics = []
     cross_musics.each do |cross_music|
-      musics << cross_music.music
+      musics << {
+        id: cross_music.music[:id],
+        name: cross_music.music[:name],
+        artist: cross_music.music[:artist],
+        user_cross_music_id: cross_music[:id]
+      }
     end
     json_response(musics)
   end
