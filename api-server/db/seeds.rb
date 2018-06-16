@@ -35,10 +35,10 @@ UserMusic.create(user_id: 2, music_id: 4, local_path: '/home/yhonda/local')
 UserMusic.create(user_id: 3, music_id: 1, local_path: '/home/tshimakawa/local')
 
 ## Live モデル
-Live.create(user_id: 2, name: 'スーパーライブ')
-Live.create(user_id: 2, name: 'はんなりライブ')
-Live.create(user_id: 5, name: '女子限定ライブ@兵庫')
-Live.create(user_id: 5, name: 'Mステ')
+Live.create(user_id: 2, name: 'スーパーライブ', date: DateTime.now)
+Live.create(user_id: 2, name: 'はんなりライブ', date: DateTime.now.tomorrow)
+Live.create(user_id: 5, name: '女子限定ライブ@兵庫', date: DateTime.now.tomorrow)
+Live.create(user_id: 5, name: 'Mステ', date: DateTime.now.tomorrow.tomorrow)
 
 ## User_cross_music モデル
 # UserCrossMusic.create(user_id: 1, music_id: 1)
