@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180616102512) do
+ActiveRecord::Schema.define(version: 20180616135234) do
 
   create_table "lives", force: :cascade do |t|
     t.integer "user_id"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20180616102512) do
     t.boolean "upload", default: false
     t.string "path"
     t.integer "user_id", default: 0
+  end
+
+  create_table "user_cross_musics", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "music_id"
+    t.boolean "flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_musics", force: :cascade do |t|

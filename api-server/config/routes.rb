@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get '/musics/:id', to: 'musics#show'
     get '/musics/uploaded/user/:id', to: 'musics#get_uploaded'
     get '/musics/possessed/user/:id', to: 'musics#get_possessed'
+    get '/musics/cross/accepted/user/:id', to: 'musics#get_cross_accepted_music'
+    post '/musics/cross/user', to: 'musics#save_received_cross_music'
 
     get '/lives', to: 'lives#index'
     post '/lives', to: 'lives#create'
