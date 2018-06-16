@@ -20,7 +20,7 @@ User.create(user_id: SecureRandom.hex(10), age: 19, sex: 0, job: 0, area: '兵�
 
 ## Music モデル
 # J-Pop、イントロなし、すれ違い通信拒否
-Music.create(name: 'カエルの唄', artist: 'カエルバンド', genre: 0, like: 54, intro: false, cross: false, path: '/home/tshimakawa', user_id: 1)
+Music.create(name: 'トマトの唄', artist: '赤色バンド', genre: 0, like: 54, intro: false, cross: false, path: '/home/tshimakawa', user_id: 1)
 # K-Pop、イントロあり、すれ違い通信拒否
 Music.create(name: 'パンダの唄', artist: 'パンダバンド', genre: 1, like: 39, intro: true, cross: false, path: '/home/rtomita', user_id: 1)
 # クラシック、イントロあり、すれ違い通信許可
@@ -38,6 +38,7 @@ UserMusic.create(user_id: 3, music_id: 1, local_path: '/home/tshimakawa/local')
 Live.create(user_id: 2, name: 'スーパーライブ')
 Live.create(user_id: 2, name: 'はんなりライブ')
 Live.create(user_id: 5, name: '女子限定ライブ@兵庫')
+Live.create(user_id: 5, name: 'Mステ')
 
 ## User_cross_music モデル
 # UserCrossMusic.create(user_id: 1, music_id: 1)
