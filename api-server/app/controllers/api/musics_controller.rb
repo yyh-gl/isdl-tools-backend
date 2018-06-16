@@ -7,7 +7,7 @@ class Api::MusicsController < ApplicationController
 
   # POST /api/music
   def create
-    music = Music.create!(name: params[:name], artist: params[:artist])
+    music = Music.create!(name: params[:name], artist: params[:artist], path: params[:path])
     json_response(music)
   end
 
@@ -48,5 +48,6 @@ class Api::MusicsController < ApplicationController
 
   swagger_model :Music do
     description 'Music parameters'
+    property :id, :integer, :required, 1
   end
 end
