@@ -27,8 +27,13 @@ class Api::MusicsController < ApplicationController
   # GET /api/musics/possessed/user/:id
   def get_possessed
     user = User.find(params[:id])
-    musics = user.user_musics.music
-    json_response(musics)
+    musics = user.user_musics
+
+    possessed_musics = []
+    musics.each do |music|
+      possessed_musics << Music.find(music['music_id'])
+    end
+    json_response(possessed_musics)
   end
 
   swagger_controller :Musics, 'Music API'
