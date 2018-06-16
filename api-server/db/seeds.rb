@@ -35,3 +35,8 @@ UserMusic.create(user_id: 3, music_id: 1, local_path: '/home/tshimakawa/local')
 Live.create(user_id: 2, name: '大阪でライブやりまーす')
 Live.create(user_id: 2, name: '京都でライブやりまーす')
 Live.create(user_id: 5, name: '兵庫でライブやりまーす')
+
+## User_cross_music モデル
+UserCrossMusic.create(user_id: 1, music_id: 1)
+UserCrossMusic.create(user_id: 2, music_id: 2)
+UserCrossMusic.create(user_id: 2, music_id: 3)
