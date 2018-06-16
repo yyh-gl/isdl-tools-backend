@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
     get '/musics', to: 'musics#index'
     post '/musics', to: 'musics#create'
-    get '/musics/:id', to: 'musics#show'
-    get '/musics/uploaded/user/:id', to: 'musics#get_uploaded'
-    get '/musics/possessed/user/:id', to: 'musics#get_possessed'
+    get '/musics/:user_id', to: 'musics#show'
+    get '/musics/uploaded/user/:user_id', to: 'musics#get_uploaded'
+    get '/musics/possessed/user/:user_id', to: 'musics#get_possessed'
 
     # すれちがい通信で取得した曲に関するAPI
     get '/musics/cross/:user_id', to: 'musics#get_received_cross_music'
