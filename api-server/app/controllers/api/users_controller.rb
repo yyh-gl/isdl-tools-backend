@@ -1,18 +1,18 @@
 class Api::UsersController < ApplicationController
 
-  # GET /api/user
+  # GET /api/users
   def index
     users = User.all
     json_response(users)
   end
 
-  # POST /api/user/
+  # POST /api/users
   def create
     user = User.create!(user_id: SecureRandom.hex(10))
     json_response(user)
   end
 
-  # GET /api/user/:id
+  # GET /api/users/:id
   def show
     user = User.find(params[:id])
     json_response(user)
