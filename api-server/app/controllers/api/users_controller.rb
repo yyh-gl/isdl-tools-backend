@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
 
   # GET /api/users/:id
   def show
-    user = User.find(params[:id])
+    user = User.find(params[:live_id])
     json_response(user)
   end
 
