@@ -30,7 +30,7 @@ class Api::LivesController < ApplicationController
   swagger_api :create do
     summary 'Add new live information'
     consumes ['application/json']
-    param :query, :user_id, :integer, :required, 'User id'
+    param :query, :id, :integer, :required, 'User id'
     response :ok, 'Success', :Live
     response :internal_server_error
   end
